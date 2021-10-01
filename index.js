@@ -10,10 +10,24 @@ const server = express()
 server.use(express.json())
 server.use(cors())
 
+module.exports = server;
+
+const User = require('./api/users/model')
+
 server.get('/', (req, res) => {
-    res.send(`
-        <h1>this is for web46 deployment project</h1>
-    `)
+    User.find()
+        .then(users => {
+            res.json(users)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message:'error',
+                err: err.message
+            })
+        })
+    // res.send(`
+    //     <h1>This is for web46 deployment project</h1>
+    // `)
 })
 
 server.use('*', (req, res, next) => {
