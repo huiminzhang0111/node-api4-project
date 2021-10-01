@@ -1,7 +1,7 @@
 const { nanoid } = require('nanoid')
 
 function getID() {
-    return nanoid.slice(0, 5)
+    return nanoid().slice(0, 5)
 }
 
 const initialUsers = () => ([
