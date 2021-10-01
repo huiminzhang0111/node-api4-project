@@ -14,7 +14,7 @@ module.exports = server;
 
 const User = require('./api/users/model')
 
-server.get('/', (req, res) => {
+server.get('/api/users', (req, res) => {
     User.find()
         .then(users => {
             res.json(users)
